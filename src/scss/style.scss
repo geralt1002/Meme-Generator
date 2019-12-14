@@ -1,0 +1,138 @@
+//**********************VARIABLES***************************
+
+$bgbody: rgb(51, 63, 83);
+$fontColor: #fff;
+$sectionImageColor: teal;
+$hImageChoose: aqua;
+$btnColor: #0099cc;
+$btnColorHover: #2277dd;
+$sectionEditor: rgb(80, 80, 80);
+$fontSize: 1em;
+$borderRadius: 0.6em;
+$textaereaFsize: 1.2em;
+$border: 0.1em solid #000;
+$fontFamily: 'Charm', cursive;
+$fontWeight: bold;
+
+// //***************RESET*********************************
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+// //*******************************************************
+body {
+	background-color: $bgbody;
+	margin: auto;
+	color: $fontColor;
+	font-family: $fontFamily;
+	font-weight: $fontWeight;
+}
+// //***********************MIXINS********************************
+@mixin flex {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+}
+@mixin flexLeft {
+	display: flex;
+}
+//****************HEADER***************************************
+.page_header {
+	padding: 2em;
+	text-align: center;
+}
+//********************MAIN***********************************
+.page_main {
+	@include flex;
+}
+//******************SECTION_IMAGE**************************************
+.section_image--choose {
+	@include flex;
+	width: 50%;
+}
+.canvas {
+	border: 5px solid black;
+	margin: 10px;
+	background-color: gray;
+}
+.none {
+	display: none;
+}
+.image--choose {
+	padding: 0.75em;
+	border: $border;
+	text-align: center;
+	border-radius: $borderRadius;
+	background: $btnColor;
+	margin-top: -30.5em;
+	margin-right: 1em;
+	color: #fff;
+	&:hover {
+		cursor: pointer;
+		background: $btnColorHover;
+	}
+}
+.image--save {
+	@extend .image--choose;
+	font-family: $fontFamily;
+	font-weight: $fontWeight;
+	font-size: $fontSize;
+}
+input[type='file'] {
+	display: none;
+}
+//*******************SECTION_EDITOR****************************************
+.section_editor {
+	background-color: $sectionEditor;
+	width: 20%;
+	border-radius: $borderRadius;
+	.h-container {
+		margin: 2em;
+	}
+	.editor_textarea--top {
+		.tool_description {
+			padding: 1em;
+			text-align: center;
+		}
+		.editor_txt {
+			font-size: $textaereaFsize;
+			border-radius: $borderRadius;
+			padding: 0.3em;
+		}
+	}
+}
+.editor_textarea--bottom {
+	@extend .editor_textarea--top;
+	.tool_description {
+		padding: 1em;
+	}
+}
+//******************PAGE_FOOTER************************************
+.page_footer {
+	text-align: center;
+	padding: 0.5em;
+	font-size: $fontSize;
+}
+
+//**********************RESPONSIVE***********************************
+
+//********************MAIN***********************************
+@media (max-width: 600px) {
+	.page_main {
+		max-width: 100%;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		.section_image--choose {
+			width: 95%;
+			.canvas {
+				max-width: 100%;
+				margin: 0 auto;
+			}
+		}
+	}
+}
