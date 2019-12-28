@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="pl">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-      <title>Generator Memów</title>
-      <link
-         href="https://fonts.googleapis.com/css?family=Charm:400,700&amp;subset=latin-ext"
-         rel="stylesheet"
-      />
-   </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Generator Memów</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Charm:400,700&amp;subset=latin-ext"
+      rel="stylesheet"
+    />
+  </head>
 
-   <body>
-      <header class="page_header"><h1 class="page_headline">Generator memów</h1></header>
-      <main class="page_main">
-         <section class="test section_image--choose">
-            <div class="image_area">
-               <canvas id="canvas" class="canvas" width="500" height="550"></canvas>
-            </div>
-         </section>
-         <section class="section_editor">
-            <div class="h-container">
-               <label id="sendGraphic" class="image--choose">
-                  Prześłij grafikę <input type="file" id="file" size="60" />
-               </label>
-               <button class="image--save" id="saveBtn">Zapisz grafikę</button>
-               <div class="editor_textarea--top">
-                  <p class="tool_description">Tekst u góry</p>
-                  <textarea
-                     class="editor_txt"
-                     name="textTop"
-                     id="topText"
-                     cols="30"
-                     rows="3"
-                     placeholder="Tekst u góry"
-                  ></textarea>
-               </div>
-            </div>
-            <div class="h-container">
-               <div class="add editor_textarea--bottom">
-                  <p class="tool_description">Tekst u dołu</p>
-                  <textarea
-                     class="editor_txt"
-                     name="bottomText"
-                     id="textBottom"
-                     cols="30"
-                     rows="3"
-                     placeholder="Tekst u dołu"
-                  ></textarea>
-               </div>
-            </div>
-         </section>
-      </main>
-      <footer class="page_footer">
-         <p>Krzysztof Umiński | 2018</p>
-      </footer>
-   </body>
+  <body>
+    <header class="page_header">
+      <h1 class="page_headline">Generator memów</h1>
+    </header>
+    <main class="page_main">
+      <section class="test section_image--choose">
+        <div class="image_area">
+          <canvas id="canvas" class="canvas" width="500" height="550"></canvas>
+        </div>
+      </section>
+      <section class="section_editor">
+        <div class="btn h-container">
+          <label id="sendGraphic" class="image--choose">
+            Prześłij grafikę <input type="file" id="file" size="60" />
+          </label>
+          <button class="image--save" id="saveBtn">Zapisz grafikę</button>
+          <div class="editor_textarea--top">
+            <p class="tool_description">Tekst u góry</p>
+            <textarea
+              class="editor_txt"
+              name="textTop"
+              id="topText"
+              cols="30"
+              rows="3"
+              placeholder="Tekst u góry"
+            ></textarea>
+          </div>
+        </div>
+        <div class="h-container">
+          <div class="add editor_textarea--bottom">
+            <p class="tool_description">Tekst u dołu</p>
+            <textarea
+              class="editor_txt"
+              name="bottomText"
+              id="textBottom"
+              cols="30"
+              rows="3"
+              placeholder="Tekst u dołu"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="page_footer">
+      <p>Krzysztof Umiński | 2018</p>
+    </footer>
+  </body>
 </html>

@@ -9,130 +9,156 @@ $btnColorHover: #2277dd;
 $sectionEditor: rgb(80, 80, 80);
 $fontSize: 1em;
 $borderRadius: 0.6em;
-$textaereaFsize: 1.2em;
+$textaereaFsize: 1em;
 $border: 0.1em solid #000;
-$fontFamily: 'Charm', cursive;
+$fontFamily: "Charm", cursive;
 $fontWeight: bold;
 
 // //***************RESET*********************************
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 // //*******************************************************
 body {
-	background-color: $bgbody;
-	margin: auto;
-	color: $fontColor;
-	font-family: $fontFamily;
-	font-weight: $fontWeight;
+  background-color: $bgbody;
+  margin: auto;
+  font-size: 16px;
+  color: $fontColor;
+  font-family: $fontFamily;
+  font-weight: $fontWeight;
 }
 // //***********************MIXINS********************************
 @mixin flex {
-	display: flex;
-	align-content: center;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 @mixin flexLeft {
-	display: flex;
+  display: flex;
 }
 //****************HEADER***************************************
 .page_header {
-	padding: 2em;
-	text-align: center;
+  padding: 2em;
+  text-align: center;
 }
 //********************MAIN***********************************
 .page_main {
-	@include flex;
+  @include flex;
 }
 //******************SECTION_IMAGE**************************************
 .section_image--choose {
-	@include flex;
-	width: 50%;
+  @include flex;
 }
 .canvas {
-	border: 5px solid black;
-	margin: 10px;
-	background-color: gray;
+  border: 0.31em solid black;
+  margin: 0.62em;
+  background-color: gray;
 }
 .none {
-	display: none;
+  display: none;
 }
 .image--choose {
-	padding: 0.75em;
-	border: $border;
-	text-align: center;
-	border-radius: $borderRadius;
-	background: $btnColor;
-	margin-top: -30.5em;
-	margin-right: 1em;
-	color: #fff;
-	&:hover {
-		cursor: pointer;
-		background: $btnColorHover;
-	}
+  padding: 0.75em;
+  border: $border;
+  text-align: center;
+  border-radius: $borderRadius;
+  background: $btnColor;
+  margin-top: -30.5em;
+  margin-right: 1em;
+  color: #fff;
+  &:hover {
+    cursor: pointer;
+    background: $btnColorHover;
+  }
 }
 .image--save {
-	@extend .image--choose;
-	font-family: $fontFamily;
-	font-weight: $fontWeight;
-	font-size: $fontSize;
+  @extend .image--choose;
+  font-family: $fontFamily;
+  font-weight: $fontWeight;
+  font-size: $fontSize;
 }
-input[type='file'] {
-	display: none;
+input[type="file"] {
+  display: none;
 }
 //*******************SECTION_EDITOR****************************************
 .section_editor {
-	background-color: $sectionEditor;
-	width: 20%;
-	border-radius: $borderRadius;
-	.h-container {
-		margin: 2em;
-	}
-	.editor_textarea--top {
-		.tool_description {
-			padding: 1em;
-			text-align: center;
-		}
-		.editor_txt {
-			font-size: $textaereaFsize;
-			border-radius: $borderRadius;
-			padding: 0.3em;
-		}
-	}
+  background-color: $sectionEditor;
+  max-width: 31.25em;
+  border-radius: $borderRadius;
+  .btn_btn--flex {
+    display: flex;
+    justify-content: center;
+    width: 3em;
+  }
+  .h-container {
+    margin: 2em;
+  }
+  .editor_textarea--top {
+    .tool_description {
+      padding: 0.5em;
+      text-align: center;
+    }
+    .editor_txt {
+      font-size: $textaereaFsize;
+      border-radius: $borderRadius;
+      padding: 0.3em;
+      resize: none;
+      max-width: 100%;
+    }
+  }
 }
 .editor_textarea--bottom {
-	@extend .editor_textarea--top;
-	.tool_description {
-		padding: 1em;
-	}
+  @extend .editor_textarea--top;
+  .tool_description {
+    padding: 1em;
+  }
 }
 //******************PAGE_FOOTER************************************
 .page_footer {
-	text-align: center;
-	padding: 0.5em;
-	font-size: $fontSize;
+  text-align: center;
+  padding: 0.5em;
+  font-size: $fontSize;
 }
 
 //**********************RESPONSIVE***********************************
 
 //********************MAIN***********************************
-@media (max-width: 600px) {
-	.page_main {
-		max-width: 100%;
-		display: flex;
-		align-content: center;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		.section_image--choose {
-			width: 95%;
-			.canvas {
-				max-width: 100%;
-				margin: 0 auto;
-			}
-		}
-	}
+@media (min-width: 320px) and (max-width: 1200px) {
+  .page_main {
+    max-width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .section_image--choose {
+      width: 95%;
+      .canvas {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+    /*EDITOR*/
+    .section_editor {
+      width: 95%;
+      .editor_txt {
+        width: 95%;
+      }
+      .h-container {
+        max-width: 95%;
+        margin: 2em auto;
+        text-align: center;
+      }
+    }
+  }
+}
+@media (min-width: 1201px) {
+  .page_main {
+    .section_image--choose {
+      width: 50%;
+    }
+  }
 }

@@ -1,100 +1,102 @@
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, options) => {
-   // Check is production
-   const isProd = options.mode === 'production' ? true : false;
+  // Check is production
+  const isProd = options.mode === "production";
 
-   return {
-      entry: './src/index.js',
-      output: {
-         path: path.resolve(__dirname, 'dist'),
-         filename: 'bundle.js'
-      },
+  return {
+    entry: "./src/index.js",
+    output: {
+      path: path.resolve(__dirname, "dist"),
+      filename: "index.js"
+    },
 
-      devtool: isProd ? false : 'source-map',
+    devtool: isProd ? false : "source-map",
 
-      module: {
-         rules: [
+    module: {
+      rules: [
+        {
+          test: /\.(scss|sass|css)$/,
+          use: [
             {
-               test: /\.(scss|sass|css)$/,
-               exclude: /node_modules/,
-               use: ExtractTextPlugin.extract({
-                  use: [
-                     {
-                        loader: 'css-loader',
-                        options: { sourceMap: isProd ? false : true }
-                     },
-                     {
-                        loader: 'postcss-loader',
-                        options: {
-                           ident: 'postcss',
-                           plugins: loader => [require('autoprefixer')(), require('cssnano')()],
-                           sourceMap: isProd ? false : true
-                        }
-                     },
-                     {
-                        loader: 'sass-loader',
-                        options: { sourceMap: isProd ? false : true }
-                     }
-                  ],
-                  fallback: {
-                     loader: 'style-loader',
-                     options: { sourceMap: isProd ? false : true }
-                  },
-                  publicPath: '../'
-               })
+              loader: "style-loader"
+            },
+            MiniCssExtractPlugin.loader,
+            {
+              loader: "css-loader",
+              options: { sourceMap: !isProd }
             },
             {
-               test: /\.js$/,
-               exclude: /node_modules/,
-               use: {
-                  loader: 'babel-loader'
-               }
+              loader: "postcss-loader",
+              options: {
+                ident: "postcss",
+                plugins: loader => [
+                  require("autoprefixer")(),
+                  require("cssnano")()
+                ],
+                sourceMap: !isProd
+              }
             },
             {
-               test: /\.(gif|png|jpe?g|svg)$/,
-               exclude: /fonts?/,
-               use: [
-                  {
-                     loader: 'file-loader',
-                     options: {
-                        name: '[name].[ext]',
-                        outputPath: 'img/'
-                     }
-                  },
-                  {
-                     loader: 'image-webpack-loader',
-                     options: {
-                        disable: isProd ? false : true
-                     }
-                  }
-               ]
-            },
-            {
-               test: /\.(html)$/,
-               use: {
-                  loader: 'html-loader',
-                  options: {
-                     //  minimize: true
-                  }
-               }
+              loader: "sass-loader",
+              options: { sourceMap: !isProd }
             }
-         ]
-      },
-
-      devServer: {
-         contentBase: path.join(__dirname, 'src'),
-         compress: true,
-         port: 9000
-      },
-
-      plugins: [
-         new ExtractTextPlugin('css/style.css'),
-         new HtmlWebpackPlugin({
-            template: './src/index.html'
-         })
+          ]
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader"
+          }
+        },
+        {
+          test: /\.(gif|png|jpe?g|svg)$/,
+          exclude: /fonts?/,
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: "[name].[ext]",
+                outputPath: "img/"
+              }
+            },
+            {
+              loader: "image-webpack-loader",
+              options: {
+                disable: !isProd
+              }
+            }
+          ]
+        },
+        {
+          test: /\.(html)$/,
+          use: {
+            loader: "html-loader",
+            options: {
+              //  minimize: true
+            }
+          }
+        }
       ]
-   };
+    },
+
+    devServer: {
+      contentBase: path.join(__dirname, "src"),
+      compress: true,
+      port: 9000
+    },
+
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "./src/index.html"
+      }),
+      new MiniCssExtractPlugin({
+        filename: "[name].css",
+        chunkFilename: "[id].css"
+      })
+    ]
+  };
 };
