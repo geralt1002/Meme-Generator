@@ -11,7 +11,7 @@ $fontSize: 1em;
 $borderRadius: 0.6em;
 $textaereaFsize: 1em;
 $border: 0.1em solid #000;
-$fontFamily: "Charm", cursive;
+$fontFamily: 'Charm', cursive;
 $fontWeight: bold;
 
 // //***************RESET*********************************
@@ -80,7 +80,7 @@ body {
   font-weight: $fontWeight;
   font-size: $fontSize;
 }
-input[type="file"] {
+input[type='file'] {
   display: none;
 }
 //*******************SECTION_EDITOR****************************************
@@ -119,8 +119,9 @@ input[type="file"] {
 //******************PAGE_FOOTER************************************
 .page_footer {
   text-align: center;
-  padding: 0.5em;
-  font-size: $fontSize;
+  padding: 1.5em;
+  margin: 2em;
+  font-size: $fontSize * 1.1;
 }
 
 //**********************RESPONSIVE***********************************
